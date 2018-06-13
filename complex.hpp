@@ -5,17 +5,17 @@
 
 using namespace std; 
 
-template <class T> 
+template <class T> //шаблон класса (шаблон Т, где Т- это опререденный тип данных) (int в нашем случае)
 class Complex{ 
   private: 
-    std::pair<T, T>* Pair; 
+    std::pair<T, T>* Pair; //указатель типа pair, где pair - это структура данных, класс хранящий в себе два значения
   public: 
     Complex(); 
     Complex(T a); 
     Complex(T a, T b); 
-    Complex(const Complex<T>& c); 
-    auto swap_(Complex<T>& c) -> void; 
-    auto operator=(const Complex<T>& c) -> Complex<T>&; 
+    Complex(const Complex<T>& c); //конструктор коипрования
+    auto swap_(Complex<T>& c) -> void; //обмен полями у двух объектов класса
+    auto operator=(const Complex<T>& c) -> Complex<T>&; //перегрузка операторов
     auto operator+(const Complex<T>& c) -> Complex<T>; 
     auto operator-(const Complex<T>& c) -> Complex<T>; 
     auto operator*(const Complex<T>& c) -> Complex<T>; 
@@ -23,17 +23,17 @@ class Complex{
     auto operator!() -> Complex<T>; 
     auto operator==(const Complex<T>& c) -> bool; 
     auto operator!=(const Complex<T>& c) -> bool; 
-    auto operator[](T index) -> T; 
-    static Complex<T> from_string(const string& str); 
-    template <class T1> 
-    friend auto operator«(ostream&, const Complex<T1>& c) -> ostream&; 
-    template <class T2,class T3> 
-    friend auto operator»(T2&, Complex<T3>& c) -> istream&; 
+    auto operator[](T index) -> T; //перегрузка оператора получения по индексу
+    static Complex<T> from_string(const string& str); //преобразование типа
+    template <class T1> //новый шаблон для дружественных функций
+    friend auto operator«(ostream&, const Complex<T1>& c) -> ostream&; //перегрузка операторов для загрузки в поток
+    template <class T2,class T3> //шаблоны для выгрузки из потока
+    friend auto operator»(T2&, Complex<T3>& c) -> istream&; //перегрузка операторов для выгрузки из потока
     ~Complex(); 
 }; 
-template <class T> 
-Complex<T>::Complex(){ 
-  Pair=new pair<T,T>(); 
+template <class T> //даем ф-ии понять, в какой тип данных ей необходимо развернутся
+Complex<T>::Complex(){ //показываем, что ф-ия принадлежит классу
+  Pair=new pair<T,T>(); //выделяем динамически память для укзаателя pair
 } 
 template <class T> 
 Complex<T>::Complex(T a){ 
