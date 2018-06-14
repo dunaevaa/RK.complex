@@ -5,7 +5,7 @@
 
 using namespace std; 
 
-template <class T> //шаблон класса (шаблон Т, где Т- параметр шаблона класса) (int в нашем случае)
+template <class T> //шаблон класса (Т- параметр шаблона класса) 
 class Complex{ 
   private: 
     std::pair<T, T>* Pair; //указатель типа pair, где pair - это структура данных, класс хранящий в себе два значения
